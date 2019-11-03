@@ -2,6 +2,8 @@ import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
+import java.security.Key;
+
 public class App {
     @Test
     public void test1(){
@@ -24,6 +26,7 @@ public class App {
         Long postId = jedis.incr("posts");
         String myPost = JSON.toJSONString(post);
         jedis.set("post:"+postId+":data",myPost);
+
         return postId;
     }
 
